@@ -1,0 +1,6 @@
+{
+  "name": "session-glance",
+  "version": "0.6.0",
+  "description": "Side pane showing the session at a glance: topic, results, decisions, open points and what waits on you",
+  "types": "./types/index.d.ts"
+}
