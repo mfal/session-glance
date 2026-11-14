@@ -32,6 +32,12 @@ The same pane in the terminal:
 
 The screenshots show made-up example sessions.
 
+## Feedback
+
+Bugs and ideas are welcome as
+[issues](https://github.com/mfal/session-glance/issues). Pull requests are not
+accepted.
+
 ## How it works
 
 The mod registers the tool `mcp__session-glance__update`. Its description tells
@@ -51,7 +57,7 @@ toggles and the usage counter.
 ## Install
 
 The repository is its own marketplace (`.claude-plugin/marketplace.json`).
-From GitHub (the repository is private, so you need access to it):
+From GitHub:
 
 ```bash
 claude plugin marketplace add mfal/session-glance
