@@ -16,6 +16,22 @@ current state of the session topic, not the path taken.
 - The pane title shows the time of the last update and the estimated tokens
   spent on the tool so far.
 
+## What it looks like
+
+In the desktop app, with a question waiting on you and its answer buttons:
+
+![Glance pane in the desktop app](docs/glance-desktop.png)
+
+Linked items, a ★ for a notable finding and a collapsed side section:
+
+![Glance pane with links and a collapsed section](docs/glance-links.png)
+
+The same pane in the terminal:
+
+![Glance pane in the terminal](docs/glance-terminal.png)
+
+The screenshots show made-up example sessions.
+
 ## How it works
 
 The mod registers the tool `mcp__session-glance__update`. Its description tells
@@ -97,5 +113,10 @@ types (git-ignored) and `tsc -p ~/dev/skills/session-glance` type-checks it.
 
 - `.claude-plugin/plugin.json`: manifest
 - `.claude-plugin/marketplace.json`: makes the folder installable
-- `hooks/register.tsx`: tool, command, prompt trigger and pane rendering
+- `hooks/register.tsx`: entry point, wires the hooks (tool, command, prompt
+  trigger, `wrap_up` gate)
+- `hooks/prompts.ts`: every text Claude reads: tool description, field
+  descriptions, the two mid-session messages
+- `hooks/glance.ts`: names, parsing of the tool input, derived values
+- `hooks/pane.tsx`: pane rendering and its buttons
 - `types/index.d.ts`: state contract
