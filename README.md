@@ -22,6 +22,11 @@ In the desktop app, with a question waiting on you and its answer buttons:
 
 ![Glance pane in the desktop app](docs/glance-desktop.png)
 
+Questions that come up in the chat are collected at the top, so none gets
+lost in the scrollback. A click on a button answers one:
+
+![Glance pane with a question from the chat and three answer buttons](docs/glance-questions.png)
+
 Linked items, a ★ for a notable finding and a collapsed side section:
 
 ![Glance pane with links and a collapsed section](docs/glance-links.png)
