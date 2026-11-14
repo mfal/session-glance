@@ -1,0 +1,35 @@
+name: Bug
+description: Something in the glance pane does not work as described
+labels: [bug]
+body:
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened?
+      description: What you did, what the pane showed, and what you expected instead.
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Versions
+      description: Output of `claude --version` and the session-glance version.
+      placeholder: Claude Code 2.1.x, session-glance 0.6.0
+    validations:
+      required: true
+  - type: dropdown
+    id: surface
+    attributes:
+      label: Surface
+      options:
+        - Desktop app
+        - Terminal
+        - VS Code
+        - Mobile
+    validations:
+      required: true
+  - type: textarea
+    id: screenshot
+    attributes:
+      label: Screenshot
+      description: Optional. Check it for content you do not want to publish.

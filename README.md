@@ -36,7 +36,8 @@ The screenshots show made-up example sessions.
 
 Bugs and ideas are welcome as
 [issues](https://github.com/mfal/session-glance/issues). Pull requests are not
-accepted.
+accepted, see [CONTRIBUTING.md](CONTRIBUTING.md). Security problems go through
+[private reporting](SECURITY.md).
 
 ## How it works
 
@@ -126,3 +127,7 @@ types (git-ignored) and `tsc -p ~/dev/skills/session-glance` type-checks it.
 - `hooks/glance.ts`: names, parsing of the tool input, derived values
 - `hooks/pane.tsx`: pane rendering and its buttons
 - `types/index.d.ts`: state contract
+
+## License
+
+[MIT](LICENSE)

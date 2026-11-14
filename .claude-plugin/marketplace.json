@@ -1,5 +1,6 @@
 {
   "name": "session-glance",
+  "description": "session-glance, a Claude Code mod that keeps the state of the session in a pane beside the chat",
   "owner": { "name": "Marco Falkenberg" },
   "plugins": [{ "name": "session-glance", "source": "./" }]
 }
