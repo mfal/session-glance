@@ -57,16 +57,23 @@ toggles and the usage counter.
 
 ## Install
 
-The repository is its own marketplace (`.claude-plugin/marketplace.json`).
-From GitHub:
+One line installs it. From a shell:
 
 ```bash
-claude plugin marketplace add mfal/session-glance
+claude plugin install session-glance --marketplace mfal/session-glance
 ```
 
-```bash
-claude plugin install session-glance@session-glance
+At the prompt of a terminal session:
+
 ```
+/plugin install session-glance --marketplace mfal/session-glance
+```
+
+Confirm with `y` to add the marketplace, then pick a scope.
+
+In the desktop app, where `/plugin` does not run: click **+** next to the
+prompt box, then **Plugins**, **Add marketplace** with `mfal/session-glance`,
+then **Add plugin**.
 
 To get a newer version later:
 
