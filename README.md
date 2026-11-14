@@ -1,7 +1,23 @@
 # session-glance
 
-A Claude Code mod (plugin) that keeps a **glance pane** beside the chat: the
-current state of the session topic, not the path taken.
+**Know where your Claude Code session stands, without scrolling.**
+
+Forty tool calls into a session, the answers are buried. What did we decide?
+What is still open? Wasn't there a question for me? session-glance keeps all
+of that in a pane beside the chat, and Claude rewrites it at the end of every
+turn: results, decisions, open points, the next step, and whatever is waiting
+on you, with buttons to answer right there.
+
+It is not a log and not a to-do list. It is the state of the session, at a
+glance.
+
+![Glance pane in the desktop app](docs/glance-desktop.png)
+
+```bash
+claude plugin install session-glance --marketplace mfal/session-glance
+```
+
+## What you get
 
 - **Topic** as headline, then 2–6 sections (results, decisions, open points,
   next step, running jobs), at most 5 items each.
@@ -17,10 +33,6 @@ current state of the session topic, not the path taken.
   spent on the tool so far.
 
 ## What it looks like
-
-In the desktop app, with a question waiting on you and its answer buttons:
-
-![Glance pane in the desktop app](docs/glance-desktop.png)
 
 Questions that come up in the chat are collected at the top, so none gets
 lost in the scrollback. A click on a button answers one:
