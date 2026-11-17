@@ -32,6 +32,14 @@ claude plugin install session-glance --marketplace mfal/session-glance
 - The pane title shows the time of the last update and the estimated tokens
   spent on the tool so far.
 
+## Cost
+
+Claude writes the pane itself, with the session's own model. Expect roughly
+**5 % more output tokens** per session: about 700 tokens per update, usually
+sent in the same request as `wrap_up`. When a turn ends without an update, the
+`wrap_up` gate asks once for one, which costs one extra request in that turn.
+The pane title shows what the current session has spent on it.
+
 ## What it looks like
 
 Questions that come up in the chat are collected at the top, so none gets
