@@ -1,6 +1,6 @@
 {
   "name": "session-glance",
-  "version": "0.6.0",
+  "version": "0.6.1",
   "description": "Side pane showing the session at a glance: topic, results, decisions, open points and what waits on you",
   "author": { "name": "Marco Falkenberg", "url": "https://github.com/mfal" },
   "homepage": "https://github.com/mfal/session-glance",

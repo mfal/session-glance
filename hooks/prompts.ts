@@ -6,7 +6,7 @@ export const GUIDE = [
   // What goes in, what stays out
   'Glance pane beside the chat: the current state of the session topic, not the path taken. Put in: results, findings, decisions with their reason, values, open points, next step. Leave out: your own work steps, attempts, changed files; procedures only when they are the topic. Running work the user waits on (sessions, jobs, agents) belongs in: section "Running", tone suggestion, one item per job; once its result is in, drop the item and place the result. Write in the language the user writes in, no Markdown.',
   // When to call
-  'When to call: once at the end of a turn, before wrap_up, whenever the state changed, including when a waiting point appears or is resolved. Also right after starting work the user will wait on (agent, session, Codex or other background job), so it shows under "Running" at once. Not for turns with nothing new or a session that is a single factual question.',
+  'When to call: once at the end of a turn whenever the state changed, including when a waiting point appears or is resolved. Never send it as a message of its own: put it in the same message as wrap_up, as a parallel tool call placed before wrap_up. Also when starting work the user will wait on (agent, session, Codex or other background job), so it shows under "Running" at once: then in the same message as the call that starts it. Not for turns with nothing new or a session that is a single factual question.',
   // Links
   'Links: when an item is about something with its own URL (MR, PR, issue, commit, pipeline, website, docs, artifact, dashboard) and exactly that URL already appeared in this session (tool output, user message, your own reply), set link to it; the item text becomes clickable. Only URLs you have seen, never invent them or build them from IDs; no known URL, no link. Never put URLs into text or sub; one link per item (split items with several targets).',
   // Replace, don't append
@@ -39,7 +39,7 @@ export const UPDATED = 'Glance updated.'
 
 // Answer to a wrap_up in a turn that has not updated the pane yet.
 export const nudge = (tool: string) =>
-  `This turn has not updated the glance pane yet. If the state changed, call ${tool} first, then call wrap_up again; if nothing changed, just call wrap_up again.`
+  `This turn has not updated the glance pane yet. If the state changed, send ${tool} and wrap_up again together in one message, ${tool} first; if nothing changed, just call wrap_up again.`
 
 // Context added to the prompt when the user types just "glance".
 export const fillRequest = (tool: string) =>

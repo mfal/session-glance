@@ -67,7 +67,7 @@ that changed the state. Every call replaces the whole pane.
 | `/glance` | opens the pane |
 | typing just `glance` | opens the pane and asks Claude to fill it with the full current state |
 | session start | reopens the pane if the session already has content |
-| `wrap_up` in a turn without a glance update | refused once with a nudge to update the pane first; the second `wrap_up` of the turn always passes |
+| `wrap_up` in a turn without a glance update | refused once with a nudge to send the update and `wrap_up` together in one message; the second `wrap_up` of the turn always passes |
 
 State lives in `$.state` (per session): the glance, the user's collapse
 toggles and the usage counter.
