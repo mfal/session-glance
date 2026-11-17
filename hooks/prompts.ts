@@ -24,7 +24,7 @@ export const FIELDS = {
   },
   item: {
     text: 'a few words',
-    sub: 'one concrete sentence, about twice as long as text: reason, value or consequence; almost always set',
+    sub: 'at most ~60 characters: the reason, value or consequence, terse, no full sentence needed; only when it adds something text does not say',
     link: 'https URL of the external target the item is about, only if it already appeared in this session; makes text clickable',
     icon: '✓ done, ✗ rejected/problem, → next step, ○ open, ? question',
     tone: 'colors the icon; muted also dims the text',
