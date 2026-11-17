@@ -37,9 +37,9 @@ export const FIELDS = {
 // Result of the `update` tool.
 export const UPDATED = 'Glance updated.'
 
-// Answer to a wrap_up in a turn that has not updated the pane yet.
+// Reminder added after a wrap_up in a turn that has not updated the pane yet.
 export const nudge = (tool: string) =>
-  `This turn has not updated the glance pane yet. If the state changed, send ${tool} and wrap_up again together in one message, ${tool} first; if nothing changed, just call wrap_up again.`
+  `This turn has not updated the glance pane yet. If the state changed, call ${tool} now, before your closing message; do not call wrap_up again. If nothing changed, just write your closing message. Next time send ${tool} in the same message as wrap_up.`
 
 // Context added to the prompt when the user types just "glance".
 export const fillRequest = (tool: string) =>

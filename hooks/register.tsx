@@ -14,7 +14,8 @@ const usage = atom({ plugin: 'session-glance', key: 'usage' } as const, { calls:
 
 export const register: Register = on => {
   // --- wrap_up gate ---------------------------------------------------------
-  // wrap_up without a glance update in the same turn is refused once, so the pane does not go stale.
+  // wrap_up without a glance update in the same turn passes, and the model is reminded once to send
+  // the update, so the pane does not go stale. No deny: the desktop app draws a deny as a red tool error.
   // Module variables: a reload resets them, which at worst skips the gate for one turn.
   let isUpdatedThisTurn = false
   let isNudgedThisTurn = false
@@ -30,9 +31,11 @@ export const register: Register = on => {
 
   on('tool.call', { tool: WRAP_UP }, async (_, e, next) => {
     if (isUpdatedThisTurn || isNudgedThisTurn) return next(e)
+    const answered = await next(e)
+    if (answered.deny !== undefined || answered.isError) return answered
     isNudgedThisTurn = true
 
-    return { deny: nudge(TOOL) }
+    return { ...answered, context: [...(answered.context ?? []), nudge(TOOL)] }
   })
 
   // --- Tool and command -----------------------------------------------------

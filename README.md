@@ -37,7 +37,8 @@ claude plugin install session-glance --marketplace mfal/session-glance
 Claude writes the pane itself, with the session's own model. Expect roughly
 **5 % more output tokens** per session: about 700 tokens per update, usually
 sent in the same request as `wrap_up`. When a turn ends without an update, the
-`wrap_up` gate asks once for one, which costs one extra request in that turn.
+`wrap_up` gate lets `wrap_up` through and reminds Claude once to send it, which
+costs one extra request in that turn.
 The pane title shows what the current session has spent on it.
 
 ## What it looks like
@@ -75,7 +76,7 @@ that changed the state. Every call replaces the whole pane.
 | `/glance` | opens the pane |
 | typing just `glance` | opens the pane and asks Claude to fill it with the full current state |
 | session start | reopens the pane if the session already has content |
-| `wrap_up` in a turn without a glance update | refused once with a nudge to send the update and `wrap_up` together in one message; the second `wrap_up` of the turn always passes |
+| `wrap_up` in a turn without a glance update | passes; once per turn Claude gets a hidden reminder to send the update before its closing message. No refusal, so the desktop app shows no tool error |
 
 State lives in `$.state` (per session): the glance, the user's collapse
 toggles and the usage counter.

@@ -14,17 +14,20 @@ const start = async ($: Parameters<Parameters<typeof test>[1]>[0], on: Parameter
   await $.session.start({ cwd: '/', surface: 'desktop', isInteractive: true })
 }
 
-test('wrap_up without a glance update is refused once per turn', async ($, on) => {
+test('wrap_up without a glance update passes with a reminder once per turn', async ($, on) => {
   await start($, on)
   await $.turn.start({ prompt: 'do it' } as never)
 
   const first = await $.tool.call({ tool: WRAP_UP, recap: 'r' } as never)
-  expect(first.deny).toMatch(/glance pane/)
+  expect(first.deny).toBeUndefined()
+  expect(first.result).toBe('ok')
+  expect(first.context?.join('\n')).toMatch(/glance pane/)
   const second = await $.tool.call({ tool: WRAP_UP, recap: 'r' } as never)
   expect(second.deny).toBeUndefined()
+  expect(second.context ?? []).toEqual([])
 
   await $.turn.start({ prompt: 'next' } as never)
-  expect((await $.tool.call({ tool: WRAP_UP, recap: 'r' } as never)).deny).toBeTruthy()
+  expect((await $.tool.call({ tool: WRAP_UP, recap: 'r' } as never)).context?.join('\n')).toMatch(/glance pane/)
 })
 
 test('wrap_up after a glance update passes', async ($, on) => {
@@ -32,7 +35,9 @@ test('wrap_up after a glance update passes', async ($, on) => {
   await $.turn.start({ prompt: 'do it' } as never)
   await $.tool.call({ tool: TOOL, goal: 'Test', sections: [] } as never)
 
-  expect((await $.tool.call({ tool: WRAP_UP, recap: 'r' } as never)).deny).toBeUndefined()
+  const answered = await $.tool.call({ tool: WRAP_UP, recap: 'r' } as never)
+  expect(answered.deny).toBeUndefined()
+  expect(answered.context ?? []).toEqual([])
 })
 
 test('a subagent turn does not reset the gate', async ($, on) => {
@@ -41,5 +46,5 @@ test('a subagent turn does not reset the gate', async ($, on) => {
   await $.tool.call({ tool: TOOL, goal: 'Test', sections: [] } as never)
   await $.turn.start({ prompt: 'sub', agentId: 'a1' } as never)
 
-  expect((await $.tool.call({ tool: WRAP_UP, recap: 'r' } as never)).deny).toBeUndefined()
+  expect((await $.tool.call({ tool: WRAP_UP, recap: 'r' } as never)).context ?? []).toEqual([])
 })
